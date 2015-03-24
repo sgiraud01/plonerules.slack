@@ -34,7 +34,7 @@ class SlackAction(SimpleItem):
 
     @property
     def summary(self):
-        return "Post to %s chanel on slack" % self.chanel
+        return "Post to %s channel on slack" % self.chanel
 
 
 class SlackActionExecutor(object):
@@ -58,6 +58,9 @@ class SlackActionExecutor(object):
 
         message = self.element.message.replace("${url}", event_url)
         message = message.replace("${title}", event_title)
+        message = message.replace("${user_fullname}", event_title)
+
+
         try:
             slack.chat.post_message(self.element.chanel, message, username=None, parse=None,
                      link_names=None, attachments=None, unfurl_links=None,
@@ -73,7 +76,7 @@ class SlackAddForm(AddForm):
     form_fields = form.FormFields(ISlackAction)
     
     label = u"Add Slack Action"
-    description = u"An action that can post on slack chanel"
+    description = u"An action that can post on slack channel"
     form_name = u"Configure element"
 
     def create(self, data):
@@ -94,5 +97,5 @@ class SlackEditForm(EditForm):
     form_fields = form.FormFields(ISlackAction)
     
     label = u"Edit Slack Action"
-    description = u"An action that can post on slack chanel"
+    description = u"An action that can post on slack channel"
     form_name = u"Configure element"
