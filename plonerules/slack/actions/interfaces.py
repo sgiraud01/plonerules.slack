@@ -6,13 +6,13 @@ class ISlackAction(Interface):
     """Definition of the configuration available for a Slack action"""
     
     chanel = schema.TextLine(
-        title=u"Chanel",
-        description=u"The chanel to post",
+        title=u"Channel",
+        description=u"The channel to post",
         required=True
     )
     token = schema.TextLine(
         title=u"Webhook Token",
-        description=u"The token (available in incoming Webhook integration settings on slack)",
+        description=u"The token (available in API settings on slack)",
         required=True
     )
     emoji = schema.TextLine(

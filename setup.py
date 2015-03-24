@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.0.0'
 
 setup(name='plonerules.slack',
       version=version,
-      description="Post to a slack chanel action for plone rules",
+      description="Post to a slack channel action for plone rules",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -14,10 +14,10 @@ setup(name='plonerules.slack',
         "Framework :: Plone",
         "Programming Language :: Python",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='slack plone rules',
+      author='Steve Giraud',
+      author_email='sgiraud01@gmail.com',
+      url='https://github.com/sgiraud01/plonerules.slack/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['plonerules'],

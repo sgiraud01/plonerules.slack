@@ -29,7 +29,7 @@
      <plone:ruleAction
          name="plone.actions.Slack"
          title="Slack"
-         description="Post to Slack chanel."
+         description="Post to Slack channel."
          for="*"
          event="zope.component.interfaces.IObjectEvent"
          addview="plone.actions.Slack"
