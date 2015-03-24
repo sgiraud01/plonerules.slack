@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="plonerules.slack">
+
+    <include package="plone.contentrules" />
+    <include package="plone.contentrules" file="meta.zcml" />
+
+    <!-- Slack action definition -->
+
+     <adapter factory=".slack.SlackActionExecutor" />
+
+     <browser:page
+       for="plone.app.contentrules.browser.interfaces.IRuleActionAdding"
+       name="plone.actions.Slack"
+       class=".slack.SlackAddForm"
+       permission="cmf.ManagePortal"
+       />
+
+     <browser:page
+       for="plonerules.slack.actions.interfaces.ISlackAction"
+       name="edit"
+       class=".slack.SlackEditForm"
+       permission="cmf.ManagePortal"
+       />
+
+     <plone:ruleAction
+         name="plone.actions.Slack"
+         title="Slack"
+         description="Post to Slack chanel."
+         for="*"
+         event="zope.component.interfaces.IObjectEvent"
+         addview="plone.actions.Slack"
+         editview="edit"
+         schema=".interfaces.ISlackAction"
+         factory=".slack.SlackAction"
+         />
+</configure>
