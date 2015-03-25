@@ -10,7 +10,7 @@ class ISlackAction(Interface):
         description=u"The channel to post (ex: #general)",
         required=True
     )
-    chanel = schema.TextLine(
+    username = schema.TextLine(
         title=u"Username",
         description=u"The username to use for post",
         required=True
@@ -31,5 +31,5 @@ class ISlackAction(Interface):
         description=u"Type in here the message that you \
 want to post. Some defined content can be replaced: ${title} will be replaced \
 by the title of the newly created item.  ${url} will be replaced by the \
-URL of the newly created item, and ${description} by the description",
+URL of the newly created item, ${username} by the who made the action and ${description} by the description",
         required=True)

@@ -55,11 +55,15 @@ class SlackActionExecutor(object):
         event_title = safe_unicode(obj.Title())
         event_url = obj.absolute_url()
         event_description = safe_unicode(obj.Description())
+        mt = getToolByName(self.context, 'portal_membership', None)
+        member = mt.getAuthenticatedMember()
+        event_username = member.getUserName()
         slack = Slacker(self.element.token)
         username = self.element.username
         message = self.element.message.replace("${url}", event_url)
         message = message.replace("${title}", event_title)
         message = message.replace("${description}", event_description)
+        message = message.replace("${username}", event_username)
 
 
         try:
