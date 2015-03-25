@@ -1,13 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.0'
+version = '1.0.1'
 
 setup(name='plonerules.slack',
       version=version,
       description="Post to a slack channel action for plone rules",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
