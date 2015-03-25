@@ -7,7 +7,7 @@ class ISlackAction(Interface):
     
     chanel = schema.TextLine(
         title=u"Channel",
-        description=u"The channel to post",
+        description=u"The channel to post (ex: #general)",
         required=True
     )
     token = schema.TextLine(
