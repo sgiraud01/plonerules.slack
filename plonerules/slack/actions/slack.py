@@ -28,6 +28,7 @@ class SlackAction(SimpleItem):
 
     chanel = '' #unicode paths are not allowed
     token = ''
+    username = ''
     emoji = ''    
     element = 'plone.actions.Slack'
     message = u''
@@ -53,16 +54,16 @@ class SlackActionExecutor(object):
         obj = self.event.object
         event_title = safe_unicode(obj.Title())
         event_url = obj.absolute_url()
-        
+        event_description = safe_unicode(obj.Description())
         slack = Slacker(self.element.token)
-
+        username = self.element.username
         message = self.element.message.replace("${url}", event_url)
         message = message.replace("${title}", event_title)
-        message = message.replace("${user_fullname}", event_title)
+        message = message.replace("${description}", event_description)
 
 
         try:
-            slack.chat.post_message(self.element.chanel, message, username=None, parse=None,
+            slack.chat.post_message(self.element.chanel, message, username=username, parse=None,
                      link_names=None, attachments=None, unfurl_links=None,
                      icon_url=None, icon_emoji=self.element.emoji)
         except:

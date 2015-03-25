@@ -10,6 +10,11 @@ class ISlackAction(Interface):
         description=u"The channel to post (ex: #general)",
         required=True
     )
+    chanel = schema.TextLine(
+        title=u"Username",
+        description=u"The username to use for post",
+        required=True
+    )
     token = schema.TextLine(
         title=u"Webhook Token",
         description=u"The token (available in API settings on slack)",
@@ -25,6 +30,6 @@ class ISlackAction(Interface):
         title=u"Message",
         description=u"Type in here the message that you \
 want to post. Some defined content can be replaced: ${title} will be replaced \
-by the title of the newly created item. ${url} will be replaced by the \
-URL of the newly created item.",
+by the title of the newly created item.  ${url} will be replaced by the \
+URL of the newly created item, and ${description} by the description",
         required=True)
